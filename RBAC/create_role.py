@@ -4,22 +4,23 @@ import kubernetes.client
 from kubernetes.client.rest import ApiException
 from pprint import pprint
 from get_config import cluster_config
+from parse_config import parse_config
 
 
 class CreateRole:
-    def __init__(self, namespace, clustername):
-        self.namespace = namespace
-        self.clustername = clustername
+    def __init__(self, path):
+        self.path = path
 
     def create_role(self):
+        config = parse_config(self.path)
         # create an instance of the API class
         api_instance = kubernetes.client.RbacAuthorizationV1Api(
-            kubernetes.client.ApiClient(cluster_config(self.clustername)))
-        namespace = self.namespace  # str | object name and auth scope, such as for teams and projects
-        verbs = ['create', 'list', 'update', 'deletecollection', 'get', 'patch', 'watch', 'delete']
-        resources = ['*']
-        apiGroups = [" "]
-        body = kubernetes.client.V1Role(metadata=kubernetes.client.V1ObjectMeta(name=self.namespace), rules=[
+            kubernetes.client.ApiClient(cluster_config(config['clustername'])))
+        namespace = config['namespace']  # str | object name and auth scope, such as for teams and projects
+        verbs = config['verbs']
+        resources = config['resources']
+        apiGroups = config['api_groups']
+        body = kubernetes.client.V1Role(metadata=kubernetes.client.V1ObjectMeta(name=namespace), rules=[
             kubernetes.client.V1PolicyRule(verbs=verbs, resources=resources, api_groups=apiGroups)])  # V1Role |
         pretty = 'true'  # str | If 'true', then the output is pretty printed. (optional)
         try:

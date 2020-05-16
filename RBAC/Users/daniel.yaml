@@ -1,0 +1,18 @@
+---
+namespace: 'daniel'
+clustername: 'samplecluster'
+resources:
+  - '*'
+verbs:
+  - 'create'
+  - 'update'
+  - 'delete'
+  - 'watch'
+  - 'deletecollection'
+  - 'patch'
+  - 'get'
+api_groups:
+  - ''
+User:
+  email: naguri@usf.edu
+  name: daniel

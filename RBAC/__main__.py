@@ -7,16 +7,15 @@ from create_rolebinding import CreateRoleBinding
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--clustername', dest='clustername')
-    parser.add_argument('--namespace', dest='namespace')
+    parser.add_argument('--user_config_path', dest='path')
     args = parser.parse_args()
-    a = CreateNamespace(args.namespace, args.clustername)
+    a = CreateNamespace(args.path)
     a.create_namespace()
-    b = CreateServiceAccount(args.namespace, args.clustername)
+    b = CreateServiceAccount(args.path)
     b.create_service_account()
-    c = CreateRole(args.namespace, args.clustername)
+    c = CreateRole(args.path)
     c.create_role()
-    d = CreateRoleBinding(args.namespace, args.clustername)
+    d = CreateRoleBinding(args.path)
     d.create_role_binding()
 
 
