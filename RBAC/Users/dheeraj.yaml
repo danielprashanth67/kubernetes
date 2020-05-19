@@ -14,5 +14,5 @@ verbs:
 api_groups:
   - ''
 User:
-  email: xxxx@gmail.com
-  name: daniel
+  email: xxx@gmail.com
+  name: dheeraj

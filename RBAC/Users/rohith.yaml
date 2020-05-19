@@ -1,5 +1,5 @@
 ---
-namespace: 'daniel-namespace'
+namespace: 'rohith-namespace'
 resources:
   - '*'
 clustername: 'samplecluster'
@@ -14,5 +14,5 @@ verbs:
 api_groups:
   - ''
 User:
-  email: xxxx@gmail.com
-  name: daniel
+  email: xxx@gmail.com
+  name: rohith

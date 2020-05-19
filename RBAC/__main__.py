@@ -3,6 +3,7 @@ from create_namespace import CreateNamespace
 from create_service_account import CreateServiceAccount
 from create_role import CreateRole
 from create_rolebinding import CreateRoleBinding
+from send_credentials import SendCredentials
 
 
 def main():
